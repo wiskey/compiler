@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1395460022 source:/home/wiskey/workspace/compiler/compiler/main.c
+	<stdio.h>
+	<stdlib.h>
+	"token.h"
+
+1395461307 /home/wiskey/workspace/compiler/compiler/token.h
+
+1395495576 source:/home/wiskey/workspace/compiler/compiler/token.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"token.h"
+
