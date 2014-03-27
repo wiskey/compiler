@@ -92,7 +92,7 @@ token_t next_token()
                         case '?': push_buffer('\?'); break;
                         case '\'':push_buffer('\''); break;
                         case '"': push_buffer('\"'); break;
-                        default: break;
+                        default: ungetc(c, stdin); break;
                     }
                 } else push_buffer(c);
             }

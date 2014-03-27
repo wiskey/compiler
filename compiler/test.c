@@ -24,5 +24,7 @@ int main(){
 		mean = 60 - mean;
         	printf("Your score is %d lower than 60!\n!\n", mean);
 	}
+
+	printf("hello, world \eeeee");
     return 0;
 }

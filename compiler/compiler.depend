@@ -6,7 +6,7 @@
 
 1395461307 /home/wiskey/workspace/compiler/compiler/token.h
 
-1395495576 source:/home/wiskey/workspace/compiler/compiler/token.c
+1395501817 source:/home/wiskey/workspace/compiler/compiler/token.c
 	<stdio.h>
 	<string.h>
 	<ctype.h>
