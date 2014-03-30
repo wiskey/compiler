@@ -36,6 +36,13 @@
 		<Unit filename="README">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="Table">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="lex.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lex.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<envvars />

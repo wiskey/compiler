@@ -1,6 +1,17 @@
+#include <string>
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <set>
+
 #include <cstdio>
 #include <cstring>
 #include "lex.h"
+
+
+using namespace std;
+
+set<string> sset;
 
 int main() {
 
@@ -8,8 +19,15 @@ int main() {
     freopen("Table", "w", stdout);
 
 
+    sset.clear();
     while (next_word()) {
-        printf("%s\n", buffer);
+        if (sset.find(buffer) == sset.end()) {
+            sset.insert(buffer);
+        }
+    }
+
+    for (set<string>::iterator it=sset.begin(); it!=sset.end(); it++) {
+        cout << *it << endl;
     }
 
     fclose(stdin);

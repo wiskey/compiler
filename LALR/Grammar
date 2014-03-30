@@ -9,7 +9,7 @@ statement :
 
 #复合语句
 compound-statement :
-	{ block-item-list_opt }
+	{ block-item-list }
 
 #语句列表
 block-item-list :
@@ -23,7 +23,7 @@ block-item :
 
 #表达式语句
 expression-statement :
-	expression_opt ;
+	expression ;
 
 #条件语句
 selection-statement :
@@ -34,31 +34,31 @@ selection-statement :
 iteration-statement :
 	WHILE ( expression ) statement
 	DO statement WHILE ( expression ) ;
-	FOR ( expression_opt ; expression_opt ; expression_opt ) statement
+	FOR ( expression ; expression ; expression ) statement
 
 #跳转语句
 jump-statement :
 	CONTINUE ;
 	BREAK ;
-	RETURN expression_opt ;
+	RETURN expression ;
 
 ####################################################################
 #标识符
-identifier
+IDENTIFIER
 
 #数值常量
-constant
+CONSTANT
 
 #字符串常量
 string-literal :
-	" s-char-sequence_opt "
+	" STRING "
 
 
 ####################################################################
 #主表达式
 primary-expression :
-	identifier
-	constant
+	IDENTIFIER
+	CONSTANT
 	string-literal
 	( expression )
 
