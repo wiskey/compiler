@@ -1,0 +1,170 @@
+####################################################################
+#语句
+statement :
+	compound-statement
+	expression-statement
+	selection-statement
+	iteration-statement
+	jump-statement
+
+#复合语句
+compound-statement :
+	{ block-item-list_opt }
+
+#语句列表
+block-item-list :
+	block-item
+	block-item-list block-item
+
+#语句元
+block-item :
+	declaration
+	statement
+
+#表达式语句
+expression-statement :
+	expression_opt ;
+
+#条件语句
+selection-statement :
+	IF ( expression ) statement
+	IF ( expression ) statement ELSE statement
+
+#循环语句
+iteration-statement :
+	WHILE ( expression ) statement
+	DO statement WHILE ( expression ) ;
+	FOR ( expression_opt ; expression_opt ; expression_opt ) statement
+
+#跳转语句
+jump-statement :
+	CONTINUE ;
+	BREAK ;
+	RETURN expression_opt ;
+
+####################################################################
+#标识符
+identifier
+
+#数值常量
+constant
+
+#字符串常量
+string-literal :
+	" s-char-sequence_opt "
+
+
+####################################################################
+#主表达式
+primary-expression :
+	identifier
+	constant
+	string-literal
+	( expression )
+
+#后缀表达式
+postfix-expression :
+	primary-expression
+	postfix-expression [ expression ]
+	postfix-expression ++
+	postfix-expression --
+
+#一元运算表达式
+unary-expression :
+	postfix-expression
+	++ unary-expression
+	-- unary-expression
+
+#乘法运算表达式
+multiplicative-expression :
+	unary-expression
+	multiplicative-expression * unary-expression
+	multiplicative-expression / unary-expression
+	multiplicative-expression % unary-expression
+
+#加法运算表达式
+additive-expression :
+	multiplicative-expression
+	additive-expression + multiplicative-expression
+	additive-expression - multiplicative-expression
+
+#位移运算
+shift-expression :
+	additive-expression
+	shift-expression << additive-expression
+	shift-expression >> additive-expression
+
+#关系表达式
+relational-expression :
+	shift-expression
+	relational-expression < shift-expression
+	relational-expression > shift-expression
+	relational-expression <= shift-expression
+	relational-expression >= shift-expression
+
+#等式表达式
+equality-expression :
+	relational-expression
+	equality-expression == relational-expression
+	equality-expression != relational-expression
+
+#逻辑与表达式
+logical-AND-expression :
+	equality-expression
+	logical-AND-expression && equlity-expression
+
+#逻辑或表达式
+logical-OR-expression :
+	logical-AND-expression
+	logical-OR-expression || logical-AND-expression
+
+#赋值表达式
+assignment-expression :
+	logical-OR-expression
+	unary-expression assignment-operator assignment-expression
+
+#赋值运算符
+assignment-operator :
+	=	*=	/=	%=	+=	-=	<<=	>>=	&=	^=	|=
+
+#表达式
+expression :
+	assignment-expression
+	expression , assignment-expression
+
+####################################################################
+#声明
+declaration :
+	type-specifier init-declarator-list
+
+#类型
+#只有char和int类型
+type-specifier :
+	CHAR
+	INT
+
+#初始化列表
+init-declarator-list :
+	init-declarator
+	init-declarator-list , init-declarator
+
+#初始化元
+init-declarator :
+	declarator
+	declarator = initializer
+
+#declarator
+#
+declarator :
+	identifier
+	declarator [ assignment-expression ]
+
+initializer :
+	assignment-expression
+	{ initializer-list }
+
+initializer-list :
+	assignment-expression
+	initializer-list , assignment-expression
+
+####################################################################

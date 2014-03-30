@@ -57,6 +57,7 @@ token_t next_token()
             if (!strcmp("else", buffer))return ELSE;
             if (!strcmp("while", buffer)) return WHILE;
             if (!strcmp("do", buffer))  return DO;
+            if (!strcmp("for", buffer)) return FOR;
             if (!strcmp("return", buffer)) return RETURN;
 
             return SYMBOL;
@@ -99,8 +100,22 @@ token_t next_token()
             return STRING;
         }
         switch (next_char) {
-            case '+': return PLUSOP;
-            case '-': return MINUSOP;
+            case '+':
+                next_char = getchar();
+                if (next_char == '+') {
+                    push_buffer(next_char);
+                    return PPLUSOP;
+                }
+                ungetc(next_char, stdin);
+                return PLUSOP;
+            case '-':
+                next_char = getchar();
+                if (next_char == '-') {
+                    push_buffer(next_char);
+                    return MMINUSOP;
+                }
+                ungetc(next_char, stdin);
+                return MINUSOP;
             case '*': return MULTIOP;
             case '/': return DIVOP;
             case '(': return LP;

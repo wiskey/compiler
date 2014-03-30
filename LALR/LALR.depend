@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1396170021 source:/home/wiskey/workspace/compiler/LALR/lex.cpp
+	<stdio.h>
+	<string.h>
+	"lex.h"
+
+1396169671 /home/wiskey/workspace/compiler/LALR/lex.h
+
+1396170154 source:/home/wiskey/workspace/compiler/LALR/main.cpp
+	<cstdio>
+	<cstring>
+	"lex.h"
+

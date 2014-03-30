@@ -7,7 +7,7 @@ typedef enum token token_t;
 enum token {
     /* 关键字 */
     INT = 1,
-    IF, ELSE, WHILE, DO, RETURN,
+    IF, ELSE, WHILE, DO, RETURN, FOR,
 
     /* 标识符 */
     SYMBOL,
@@ -18,6 +18,8 @@ enum token {
     /* 各种符号 */
     PLUSOP,     // '+'
     MINUSOP,    // '-'
+    PPLUSOP,    // '++'
+    MMINUSOP,   // '--'
     MULTIOP,    // '*'
     DIVOP,      // '/'
     MODOP,      // '%'
