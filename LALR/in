@@ -1,0 +1,134 @@
+1 program
+    1 compound-statement
+
+5 statement
+	1 compound-statement
+	1 expression-statement
+	1 selection-statement
+	1 iteration-statement
+    1 jump-statement
+
+
+1 compound-statement
+	3 { block-item-list }
+
+
+2 block-item-list
+	1 block-item
+	2 block-item-list block-item
+
+
+2 block-item
+	1 declaration
+	1 statement
+
+1 expression-statement
+	2 expression ;
+
+
+2 selection-statement
+	5 IF ( expression ) statement
+	7 IF ( expression ) statement ELSE statement
+
+
+3 iteration-statement
+	5 WHILE ( expression ) statement
+	7 DO statement WHILE ( expression ) ;
+	9 FOR ( expression ; expression ; expression ) statement
+
+
+3 jump-statement
+	2 CONTINUE ;
+	2 BREAK ;
+	3 RETURN expression ;
+
+
+4 primary-expression
+	1 IDENTIFIER
+	1 CONSTANT
+	1 STRING
+	3 ( expression )
+
+4 postfix-expression
+	1 primary-expression
+	4 postfix-expression [ expression ]
+	2 postfix-expression ++
+	2 postfix-expression --
+
+3 unary-expression
+	1 postfix-expression
+	2 ++ unary-expression
+	2 -- unary-expression
+
+4 multiplicative-expression
+	1 unary-expression
+	3 multiplicative-expression * unary-expression
+	3 multiplicative-expression / unary-expression
+	3 multiplicative-expression % unary-expression
+
+3 additive-expression
+	1 multiplicative-expression
+	3 additive-expression + multiplicative-expression
+	3 additive-expression - multiplicative-expression
+
+3 shift-expression
+	1 additive-expression
+	3 shift-expression << additive-expression
+	3 shift-expression >> additive-expression
+
+5 relational-expression
+	1 shift-expression
+	3 relational-expression < shift-expression
+	3 relational-expression > shift-expression
+	3 relational-expression <= shift-expression
+	3 relational-expression >= shift-expression
+
+3 equality-expression
+	1 relational-expression
+	3 equality-expression == relational-expression
+	3 equality-expression != relational-expression
+
+2 logical-AND-expression
+	1 equality-expression
+	3 logical-AND-expression && equlity-expression
+
+
+2 logical-OR-expression
+	1 logical-AND-expression
+	3 logical-OR-expression || logical-AND-expression
+
+2 assignment-expression
+	1 logical-OR-expression
+	3 unary-expression = assignment-expression
+
+2 expression
+	1 assignment-expression
+	3 expression , assignment-expression
+
+1 declaration
+	2 type-specifier init-declarator-list
+
+2 type-specifier
+	1 CHAR
+	1 INT
+
+2 init-declarator-list
+	1 init-declarator
+	3 init-declarator-list , init-declarator
+
+2 init-declarator
+	1 declarator
+	3 declarator = initializer
+
+2 declarator
+	1 identifier
+	4 declarator [ assignment-expression ]
+
+2 initializer
+	1 assignment-expression
+	3 { initializer-list }
+
+2 initializer-list
+	1 assignment-expression
+	3 initializer-list , assignment-expression
+

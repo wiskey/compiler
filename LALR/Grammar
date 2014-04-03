@@ -1,4 +1,7 @@
 ####################################################################
+program :
+    compound-statement
+
 #语句
 statement :
 	compound-statement

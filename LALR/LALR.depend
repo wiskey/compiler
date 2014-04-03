@@ -6,8 +6,26 @@
 
 1396169671 /home/wiskey/workspace/compiler/LALR/lex.h
 
-1396170154 source:/home/wiskey/workspace/compiler/LALR/main.cpp
+1396500518 source:/home/wiskey/workspace/compiler/LALR/main.cpp
+	<string>
+	<algorithm>
+	<iostream>
+	<map>
+	<set>
 	<cstdio>
 	<cstring>
-	"lex.h"
+	"lib.h"
+
+1396500775 source:/home/wiskey/workspace/compiler/LALR/lib.cpp
+	<iostream>
+	<string>
+	<set>
+	<vector>
+	<map>
+	"lib.h"
+
+1396500620 /home/wiskey/workspace/compiler/LALR/lib.h
+	<vector>
+	<string>
+	<map>
 

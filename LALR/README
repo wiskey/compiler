@@ -1,45 +1,72 @@
 LALR 分析表 生成程序
 
-非终结符：
-    additive-expression
-    assignment-expression
-    assignment-operator
-    block-item
-    block-item-list
+非终结符： 27
+    statement
     compound-statement
-    constant
-    declaration
-    declarator
-    equality-expression
-    equlity-expression
-    expression
+    block-item-list
+    block-item
     expression-statement
-    identifier
-    init-declarator
-    init-declarator-list
-    initializer
-    initializer-list
+    selection-statement
     iteration-statement
     jump-statement
+    primary-expression
+    postfix-expression
+    unary-expression
+    multiplicative-expression
+    additive-expression
+    shift-expression
+    relational-expression
+    equality-expression
     logical-AND-expression
     logical-OR-expression
-    multiplicative-expression
-    postfix-expression
-    primary-expression
-    relational-expression
-    s-char-sequence
-    selection-statement
-    shift-expression
-    statement
-    string-literal
+    assignment-expression
+    expression
+    declaration
     type-specifier
-    unary-expression
+    init-declarator-list
+    init-declarator
+    declarator
+    initializer
+    initializer-list
 
-终结符：
-    BREAK
-    CHAR
-    CONTINUE
+终结符： 39
+    {
+    }
+    ;
+    IF
+    (
+    )
     ELSE
-    RETURN
     WHILE
+    DO
+    FOR
+    CONTINUE
+    BREAK
+    RETURN
+    IDENTIFIER
+    CONSTANT
+    STRING
+    [
+    ]
+    ++
+    --
+    *
+    /
+    %
+    +
+    -
+    <<
+    >>
+    <
+    >
+    <=
+    >=
+    ==
+    !=
+    &&
+    ||
+    =
+    ,
+    CHAR
+    INT
 
