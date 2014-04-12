@@ -4,14 +4,12 @@
 1 statements
     2 statements statement
 
-5 statement
-    2 CHAR init-declarator-list
-    2 INT init-declarator-list
+6 statement
+    3 INT declarator-list ;
 	2 expression ;
 	5 IF ( expression ) statement
 	7 IF ( expression ) statement ELSE statement
 	5 WHILE ( expression ) statement
-	7 DO statement WHILE ( expression ) ;
 	9 FOR ( expression ; expression ; expression ) statement
 
 4 primary-expression
@@ -21,8 +19,8 @@
 	3 ( expression )
 
 4 postfix-expression
-	1 primary-expression
-	4 postfix-expression [ expression ]
+	1 IDENTIFIER
+	4 IDENTIFIER [ expression ]
 	2 postfix-expression ++
 	2 postfix-expression --
 
@@ -62,23 +60,22 @@
 	1 assignment-expression
 	3 expression , assignment-expression
 
-2 init-declarator-list
-	1 init-declarator
-	3 init-declarator-list , init-declarator
-
-2 init-declarator
+2 declarator-list
 	1 declarator
-	3 declarator = initializer
+	3 declarator-list , declarator
 
 2 declarator
-	1 identifier
-	4 declarator [ assignment-expression ]
-
-2 initializer
-	1 assignment-expression
-	3 { initializer-list }
+	1 IDENTIFIER
+	5 IDENTIFIER = { initializer-list }
+	3 IDENTIFIER = CONSTANT
 
 2 initializer-list
-	1 assignment-expression
-	3 initializer-list , assignment-expression
+	1 CONSTANT
+	3 initializer-list , CONSTANT
+
+
+
+
+
+
 
