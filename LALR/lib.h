@@ -11,28 +11,36 @@ using namespace std;
 //产生式右侧 元
 struct sym_t {
     sym_t() {}
-    sym_t(bool a, const string &b): is_term(a), sym(b) {}
+    sym_t(bool a, int b): is_term(a), sym(b) {}
     bool is_term;
-    string sym;
+    int sym;
 };
 
-//production type 扩展产生式类型 右端
+//production type 产生式类型
 struct prod_t {
+    int nterm;      // 左侧非终结符
     vector<sym_t> sym_list;  //产生式右侧 符号 列表
-    int dot;    //扩展产生式的 . 符号位置
+};
+
+struct prodd {
+    int prod_id;  //产生式的下标
+    int dot;        // . 所在的位置
+    vector<int> pre; //提前扫描的终结符
 };
 
 //每个状态中的产生式
 struct state_t {
-    vector<prod_t> prod;
+    vector<prodd> prod;
+    map<int, int> term_next; //终结符对应的状态
+    map<int, int> nterm_next; //非终结符对应的状态
 };
 
-extern vector<state_t> s;
-extern vector<string> term_list; //终结符列表
-extern vector<string> nterm_list;//非终结符列表
+extern vector<state_t> State;
 
-
-extern map<string, vector<prod_t> > nterm_prod; //非终结符对应的产生式
+//记录所有的产生式
+extern vector<prod_t> prod;
+extern map<string, int> term_id;    //终结符编号
+extern map<string, int> nterm_id;   //非终结符编号
 
 void Generate_state();
 void Init();

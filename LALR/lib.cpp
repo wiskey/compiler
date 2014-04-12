@@ -1,57 +1,125 @@
 #include <iostream>
 #include <string>
+#include <cstdio>
 #include <set>
 #include <vector>
 #include <map>
+#include <queue>
 #include "lib.h"
 using namespace std;
 
-vector<string> term_list;
-vector<string> nterm_list;
+vector<prod_t> prod;              //所有产生式
+vector< vector<int> > nterm_prod; //非终结符对应的产生式
+map<string, int> term_id;    //终结符编号
+map<string, int> nterm_id;   //非终结符编号
+vector<state_t> State;      //所有的状态集合
 
-map<string, vector<prod_t> > nterm_prod; //非终结符对应的产生式
+//打印识别的产生式信息表
+static void print_info() {
+    freopen("Table", "w", stdout);
+
+    map<string, int>::iterator it;
+
+    printf("term_cnt: %d\n", term_id.size());
+    for (it=term_id.begin(); it!=term_id.end(); it++) {
+        cout << it->first << " " << it->second << endl;
+    }
 
 
+    cout << endl << endl;
 
-/*
-    nterm ::
-        production_1
-        production_2
-        ....
-        production_m
-    将每个产生式展开为 扩展形式
-        nterm ::= a.Bc
-*/
-static void get_prod (string &nterm, int c) {
-    int m;
-    prod_t prod;
-    sym_t  symbol;
-    string tmp;
-    vector<prod_t> prod_l;
+    printf("nterm_cnt: %d\n", nterm_id.size());
+    for (it=nterm_id.begin(); it!=nterm_id.end(); it++) {
+        cout << it->first << " " << it->second << endl;
+    }
 
-    while (c--) {
-        cin >> m;
+    fclose(stdout);
 
-        prod.sym_list.clear();
+}
 
-        for (int i=0; i<m; i++) {
-            cin >> symbol.sym;
+//读入产生式
+void Init() {
+    int term_cnt = 0, nterm_cnt = 0;
+    int n, m;
+    string nterm, tmp;
 
-            if (symbol.sym[0] >= 'a' && symbol.sym[0] <= 'z') {
-                symbol.is_term = false;
-            } else {
-                symbol.is_term = true;
+    freopen("in", "r", stdin);
+
+    nterm_id.clear();
+    term_id.clear();
+
+    while (cin >> n >> nterm) {
+        nterm_id[nterm] = nterm_cnt++;
+
+        while (n--) {
+            cin >> m;
+            while (m--) {
+                cin >> tmp;
+                if (tmp[0] >= 'a' && tmp[0] <= 'z') continue;
+                if (term_id.find(tmp) == term_id.end()) {
+                    term_id[tmp] = term_cnt++;
+                    //cout << tmp << " " << term_cnt << endl;
+                }
             }
-            prod.sym_list.push_back(symbol);
-        }
-
-        for (int i=0; i<=m; i++) {
-            prod.dot = i;
-            prod_l.push_back(prod);
         }
     }
 
-    nterm_prod.insert(make_pair(nterm, prod_l));
+    //cout << nterm_cnt << endl;
+    //cout << term_cnt << endl;
+
+    fclose(stdin);
+
+
+
+
+    freopen("in", "r", stdin);
+
+    nterm_prod.clear();
+    prod.clear();
+
+    while (cin >> n >> nterm) {
+        vector<int> nterm_prod_l; //非终结符对应的产生式 内容
+
+        while (n--) {
+            //读入nterm对应的n个产生式
+            cin >> m;
+            prod_t p;
+
+            p.nterm = nterm_id[nterm];
+            while (m--) {
+                cin >> tmp;
+                if (tmp[0] >= 'a' && tmp[0] <= 'z') {
+                    p.sym_list.push_back(sym_t(false, nterm_id[tmp]));
+                } else {
+                    p.sym_list.push_back(sym_t(true, term_id[tmp]));
+                }
+            }
+            nterm_prod_l.push_back(prod.size());
+            prod.push_back(p);
+        }
+        nterm_prod.push_back(nterm_prod_l);
+    }
+
+    fclose(stdin);
+
+    print_info();
+}
+
+
+
+//状态生成
+void Generate_state() {
+    state_t start;
+    prodd p;
+
+    int idx = term_id["start"];
+    p.prod_id = nterm_prod[idx][0];
+    p.dot = 0;
+    p.pre.clear(); p.pre.push_back('#'); //加入输入结束符
+
+    //生成初始状态
+    start.prod.push_back(p);
+
 }
 
 
@@ -60,43 +128,15 @@ static void get_prod (string &nterm, int c) {
 void closure(state_t s) {
     queue<prod_t> Q;
 
-    vector<prod_t> &prod = s.prod;
-
-    for (size_t i=0; i<s.prod)
 }
 
 
+//对于 [A->a.Bw, b] 生成 wb 的FIRST集
+void FIRST(vector<sym_t> &sl) {
 
-void Init() {
-    int n;
-    string nterm, term;
-
-    nterm_prod.clear();
-    term_list.clear();
-    nterm_list.clear();
-
-    while (cin >> n >> nterm) {
-        nterm_list.push_back(nterm);
-
-        get_prod(nterm, n);
-    }
 }
 
-void Generate_state() {
-    state_t start;
-    start.prod.push_back(nterm_prod["program"][0]);
 
-    closure(start);
-
-    queue<state_t> Q;
-    Q.push_back(start);
-
-    while (!Q.empty()) {
-        state_t now = Q.front(); Q.pop();
-
-
-    }
-}
 
 
 

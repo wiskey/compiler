@@ -1,231 +1,52 @@
-additive-expression=> . multiplicative-expression
-additive-expression=> multiplicative-expression .
-additive-expression=> . additive-expression + multiplicative-expression
-additive-expression=> additive-expression . + multiplicative-expression
-additive-expression=> additive-expression + . multiplicative-expression
-additive-expression=> additive-expression + multiplicative-expression .
-additive-expression=> . additive-expression - multiplicative-expression
-additive-expression=> additive-expression . - multiplicative-expression
-additive-expression=> additive-expression - . multiplicative-expression
-additive-expression=> additive-expression - multiplicative-expression .
-assignment-expression=> . logical-OR-expression
-assignment-expression=> logical-OR-expression .
-assignment-expression=> . unary-expression = assignment-expression
-assignment-expression=> unary-expression . = assignment-expression
-assignment-expression=> unary-expression = . assignment-expression
-assignment-expression=> unary-expression = assignment-expression .
-block-item=> . declaration
-block-item=> declaration .
-block-item=> . statement
-block-item=> statement .
-block-item-list=> . block-item
-block-item-list=> block-item .
-block-item-list=> . block-item-list block-item
-block-item-list=> block-item-list . block-item
-block-item-list=> block-item-list block-item .
-compound-statement=> . { block-item-list }
-compound-statement=> { . block-item-list }
-compound-statement=> { block-item-list . }
-compound-statement=> { block-item-list } .
-declaration=> . type-specifier init-declarator-list
-declaration=> type-specifier . init-declarator-list
-declaration=> type-specifier init-declarator-list .
-declarator=> . identifier
-declarator=> identifier .
-declarator=> . declarator [ assignment-expression ]
-declarator=> declarator . [ assignment-expression ]
-declarator=> declarator [ . assignment-expression ]
-declarator=> declarator [ assignment-expression . ]
-declarator=> declarator [ assignment-expression ] .
-equality-expression=> . relational-expression
-equality-expression=> relational-expression .
-equality-expression=> . equality-expression == relational-expression
-equality-expression=> equality-expression . == relational-expression
-equality-expression=> equality-expression == . relational-expression
-equality-expression=> equality-expression == relational-expression .
-equality-expression=> . equality-expression != relational-expression
-equality-expression=> equality-expression . != relational-expression
-equality-expression=> equality-expression != . relational-expression
-equality-expression=> equality-expression != relational-expression .
-expression=> . assignment-expression
-expression=> assignment-expression .
-expression=> . expression , assignment-expression
-expression=> expression . , assignment-expression
-expression=> expression , . assignment-expression
-expression=> expression , assignment-expression .
-expression-statement=> . expression ;
-expression-statement=> expression . ;
-expression-statement=> expression ; .
-init-declarator=> . declarator
-init-declarator=> declarator .
-init-declarator=> . declarator = initializer
-init-declarator=> declarator . = initializer
-init-declarator=> declarator = . initializer
-init-declarator=> declarator = initializer .
-init-declarator-list=> . init-declarator
-init-declarator-list=> init-declarator .
-init-declarator-list=> . init-declarator-list , init-declarator
-init-declarator-list=> init-declarator-list . , init-declarator
-init-declarator-list=> init-declarator-list , . init-declarator
-init-declarator-list=> init-declarator-list , init-declarator .
-initializer=> . assignment-expression
-initializer=> assignment-expression .
-initializer=> . { initializer-list }
-initializer=> { . initializer-list }
-initializer=> { initializer-list . }
-initializer=> { initializer-list } .
-initializer-list=> . assignment-expression
-initializer-list=> assignment-expression .
-initializer-list=> . initializer-list , assignment-expression
-initializer-list=> initializer-list . , assignment-expression
-initializer-list=> initializer-list , . assignment-expression
-initializer-list=> initializer-list , assignment-expression .
-iteration-statement=> . WHILE ( expression ) statement
-iteration-statement=> WHILE . ( expression ) statement
-iteration-statement=> WHILE ( . expression ) statement
-iteration-statement=> WHILE ( expression . ) statement
-iteration-statement=> WHILE ( expression ) . statement
-iteration-statement=> WHILE ( expression ) statement .
-iteration-statement=> . DO statement WHILE ( expression ) ;
-iteration-statement=> DO . statement WHILE ( expression ) ;
-iteration-statement=> DO statement . WHILE ( expression ) ;
-iteration-statement=> DO statement WHILE . ( expression ) ;
-iteration-statement=> DO statement WHILE ( . expression ) ;
-iteration-statement=> DO statement WHILE ( expression . ) ;
-iteration-statement=> DO statement WHILE ( expression ) . ;
-iteration-statement=> DO statement WHILE ( expression ) ; .
-iteration-statement=> . FOR ( expression ; expression ; expression ) statement
-iteration-statement=> FOR . ( expression ; expression ; expression ) statement
-iteration-statement=> FOR ( . expression ; expression ; expression ) statement
-iteration-statement=> FOR ( expression . ; expression ; expression ) statement
-iteration-statement=> FOR ( expression ; . expression ; expression ) statement
-iteration-statement=> FOR ( expression ; expression . ; expression ) statement
-iteration-statement=> FOR ( expression ; expression ; . expression ) statement
-iteration-statement=> FOR ( expression ; expression ; expression . ) statement
-iteration-statement=> FOR ( expression ; expression ; expression ) . statement
-iteration-statement=> FOR ( expression ; expression ; expression ) statement .
-jump-statement=> . CONTINUE ;
-jump-statement=> CONTINUE . ;
-jump-statement=> CONTINUE ; .
-jump-statement=> . BREAK ;
-jump-statement=> BREAK . ;
-jump-statement=> BREAK ; .
-jump-statement=> . RETURN expression ;
-jump-statement=> RETURN . expression ;
-jump-statement=> RETURN expression . ;
-jump-statement=> RETURN expression ; .
-logical-AND-expression=> . equality-expression
-logical-AND-expression=> equality-expression .
-logical-AND-expression=> . logical-AND-expression && equlity-expression
-logical-AND-expression=> logical-AND-expression . && equlity-expression
-logical-AND-expression=> logical-AND-expression && . equlity-expression
-logical-AND-expression=> logical-AND-expression && equlity-expression .
-logical-OR-expression=> . logical-AND-expression
-logical-OR-expression=> logical-AND-expression .
-logical-OR-expression=> . logical-OR-expression || logical-AND-expression
-logical-OR-expression=> logical-OR-expression . || logical-AND-expression
-logical-OR-expression=> logical-OR-expression || . logical-AND-expression
-logical-OR-expression=> logical-OR-expression || logical-AND-expression .
-multiplicative-expression=> . unary-expression
-multiplicative-expression=> unary-expression .
-multiplicative-expression=> . multiplicative-expression * unary-expression
-multiplicative-expression=> multiplicative-expression . * unary-expression
-multiplicative-expression=> multiplicative-expression * . unary-expression
-multiplicative-expression=> multiplicative-expression * unary-expression .
-multiplicative-expression=> . multiplicative-expression / unary-expression
-multiplicative-expression=> multiplicative-expression . / unary-expression
-multiplicative-expression=> multiplicative-expression / . unary-expression
-multiplicative-expression=> multiplicative-expression / unary-expression .
-multiplicative-expression=> . multiplicative-expression % unary-expression
-multiplicative-expression=> multiplicative-expression . % unary-expression
-multiplicative-expression=> multiplicative-expression % . unary-expression
-multiplicative-expression=> multiplicative-expression % unary-expression .
-postfix-expression=> . primary-expression
-postfix-expression=> primary-expression .
-postfix-expression=> . postfix-expression [ expression ]
-postfix-expression=> postfix-expression . [ expression ]
-postfix-expression=> postfix-expression [ . expression ]
-postfix-expression=> postfix-expression [ expression . ]
-postfix-expression=> postfix-expression [ expression ] .
-postfix-expression=> . postfix-expression ++
-postfix-expression=> postfix-expression . ++
-postfix-expression=> postfix-expression ++ .
-postfix-expression=> . postfix-expression --
-postfix-expression=> postfix-expression . --
-postfix-expression=> postfix-expression -- .
-primary-expression=> . IDENTIFIER
-primary-expression=> IDENTIFIER .
-primary-expression=> . CONSTANT
-primary-expression=> CONSTANT .
-primary-expression=> . STRING
-primary-expression=> STRING .
-primary-expression=> . ( expression )
-primary-expression=> ( . expression )
-primary-expression=> ( expression . )
-primary-expression=> ( expression ) .
-program=> . compound-statement
-program=> compound-statement .
-relational-expression=> . shift-expression
-relational-expression=> shift-expression .
-relational-expression=> . relational-expression < shift-expression
-relational-expression=> relational-expression . < shift-expression
-relational-expression=> relational-expression < . shift-expression
-relational-expression=> relational-expression < shift-expression .
-relational-expression=> . relational-expression > shift-expression
-relational-expression=> relational-expression . > shift-expression
-relational-expression=> relational-expression > . shift-expression
-relational-expression=> relational-expression > shift-expression .
-relational-expression=> . relational-expression <= shift-expression
-relational-expression=> relational-expression . <= shift-expression
-relational-expression=> relational-expression <= . shift-expression
-relational-expression=> relational-expression <= shift-expression .
-relational-expression=> . relational-expression >= shift-expression
-relational-expression=> relational-expression . >= shift-expression
-relational-expression=> relational-expression >= . shift-expression
-relational-expression=> relational-expression >= shift-expression .
-selection-statement=> . IF ( expression ) statement
-selection-statement=> IF . ( expression ) statement
-selection-statement=> IF ( . expression ) statement
-selection-statement=> IF ( expression . ) statement
-selection-statement=> IF ( expression ) . statement
-selection-statement=> IF ( expression ) statement .
-selection-statement=> . IF ( expression ) statement ELSE statement
-selection-statement=> IF . ( expression ) statement ELSE statement
-selection-statement=> IF ( . expression ) statement ELSE statement
-selection-statement=> IF ( expression . ) statement ELSE statement
-selection-statement=> IF ( expression ) . statement ELSE statement
-selection-statement=> IF ( expression ) statement . ELSE statement
-selection-statement=> IF ( expression ) statement ELSE . statement
-selection-statement=> IF ( expression ) statement ELSE statement .
-shift-expression=> . additive-expression
-shift-expression=> additive-expression .
-shift-expression=> . shift-expression << additive-expression
-shift-expression=> shift-expression . << additive-expression
-shift-expression=> shift-expression << . additive-expression
-shift-expression=> shift-expression << additive-expression .
-shift-expression=> . shift-expression >> additive-expression
-shift-expression=> shift-expression . >> additive-expression
-shift-expression=> shift-expression >> . additive-expression
-shift-expression=> shift-expression >> additive-expression .
-statement=> . compound-statement
-statement=> compound-statement .
-statement=> . expression-statement
-statement=> expression-statement .
-statement=> . selection-statement
-statement=> selection-statement .
-statement=> . iteration-statement
-statement=> iteration-statement .
-statement=> . jump-statement
-statement=> jump-statement .
-type-specifier=> . CHAR
-type-specifier=> CHAR .
-type-specifier=> . INT
-type-specifier=> INT .
-unary-expression=> . postfix-expression
-unary-expression=> postfix-expression .
-unary-expression=> . ++ unary-expression
-unary-expression=> ++ . unary-expression
-unary-expression=> ++ unary-expression .
-unary-expression=> . -- unary-expression
-unary-expression=> -- . unary-expression
-unary-expression=> -- unary-expression .
+term_cnt: 33
+!= 28
+% 20
+&& 29
+( 6
+) 7
+* 18
++ 21
+++ 16
+, 32
+- 22
+-- 17
+/ 19
+; 4
+< 23
+<= 25
+= 31
+== 27
+> 24
+>= 26
+CONSTANT 12
+ELSE 8
+FOR 10
+IDENTIFIER 11
+IF 5
+INT 3
+NULL 2
+STRING 13
+WHILE 9
+[ 14
+] 15
+{ 0
+|| 30
+} 1
+
+
+nterm_cnt: 15
+additive-expression 6
+assignment-expression 10
+declarator 13
+declarator-list 12
+expression 11
+initializer-list 14
+logical-AND-expression 8
+logical-OR-expression 9
+multiplicative-expression 5
+postfix-expression 4
+primary-expression 3
+program 0
+relational-expression 7
+statement 2
+statements 1

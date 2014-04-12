@@ -1,7 +1,11 @@
+1 start
+    1 program
+
 1 program
     3 { statements }
 
-1 statements
+2 statements
+    1 NULL
     2 statements statement
 
 6 statement
@@ -35,7 +39,7 @@
 	3 additive-expression + multiplicative-expression
 	3 additive-expression - multiplicative-expression
 
-5 relational-expression
+7 relational-expression
 	1 additive-expression
 	3 relational-expression < additive-expression
 	3 relational-expression > additive-expression
@@ -53,7 +57,7 @@
 	1 logical-AND-expression
 	3 logical-OR-expression || logical-AND-expression
 
-2 assignment-expression
+1 assignment-expression
 	3 postfix-expression = logical-OR-expression
 
 2 expression
@@ -64,7 +68,7 @@
 	1 declarator
 	3 declarator-list , declarator
 
-2 declarator
+3 declarator
 	1 IDENTIFIER
 	5 IDENTIFIER = { initializer-list }
 	3 IDENTIFIER = CONSTANT
