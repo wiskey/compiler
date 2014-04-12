@@ -1,0 +1,5 @@
+(define area (lambda (r) (* 3.14 (* r r)))) 
+(area 3)
+(define fact (lambda (n) (if (<= n 1) 1 (* n (fact (- n 1))))))
+(fact 100)
+(fact 10)

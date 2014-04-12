@@ -53,9 +53,20 @@ static void get_prod (string &nterm, int c) {
 
     nterm_prod.insert(make_pair(nterm, prod_l));
 }
-void closure() {
 
+
+
+//当前状态的闭包
+void closure(state_t s) {
+    queue<prod_t> Q;
+
+    vector<prod_t> &prod = s.prod;
+
+    for (size_t i=0; i<s.prod)
 }
+
+
+
 void Init() {
     int n;
     string nterm, term;
@@ -68,6 +79,22 @@ void Init() {
         nterm_list.push_back(nterm);
 
         get_prod(nterm, n);
+    }
+}
+
+void Generate_state() {
+    state_t start;
+    start.prod.push_back(nterm_prod["program"][0]);
+
+    closure(start);
+
+    queue<state_t> Q;
+    Q.push_back(start);
+
+    while (!Q.empty()) {
+        state_t now = Q.front(); Q.pop();
+
+
     }
 }
 

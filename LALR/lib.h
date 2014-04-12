@@ -22,12 +22,19 @@ struct prod_t {
     int dot;    //扩展产生式的 . 符号位置
 };
 
+//每个状态中的产生式
+struct state_t {
+    vector<prod_t> prod;
+};
+
+extern vector<state_t> s;
 extern vector<string> term_list; //终结符列表
 extern vector<string> nterm_list;//非终结符列表
 
 
 extern map<string, vector<prod_t> > nterm_prod; //非终结符对应的产生式
 
+void Generate_state();
 void Init();
 
 #endif // LEX_H_INCLUDED

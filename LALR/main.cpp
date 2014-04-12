@@ -40,5 +40,13 @@ int main() {
 
     fclose(stdin);
     fclose(stdout);
+
+
+    //生成状态转换图
+    Generate_state();
+
+
+
+
     return 0;
 }
